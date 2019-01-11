@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <div class="row">
+    <div class="col-md-5">
+      {% with messages = get_flashed_messages()  %}
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+      <div class="card card-body">
+        <form action="{{url_for('add_contact')}}" method="POST">
+          <div class="form-group">
+            <input type="text" class="form-control" name="cliente" placeholder="Cliente">
+            
+          </div>
+          <div class="form-group">
+              <select name="mesa" class='form-control' >
+                <option value="" disabled selected>Seleccione </option>
+                  <option value="Mesa 1">Mesa 1</option>
+                  <option value="Mesa 2">Mesa 2</option>
+                  <option value="Mesa 3">Mesa 3</option>
+                  <option value="Mesa Vip">Mesa Vip</option>
+                </select>
+          </div>
+          <div class="form-group">
+              <select name="platillo" class='form-control' >
+                  <option value="" disabled selected>Seleccione </option>
+                    <option value="pepe2">pepe2</option>
+                  </select>
+          </div>
+          <button class="btn btn-primary btn-block">
+            Save 
+          </button>
+        </form>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+{% endblock %}
